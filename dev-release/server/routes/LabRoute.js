@@ -4,7 +4,7 @@ const express = require('express'),
 mongoose.set('debug', false);
 
 const SpecimanModel = mongoose.model('speciman');
-const labTest = mongoose.model('labTest');
+/*const labTest = mongoose.model('labTest');*/
 
 const Router = express.Router();
 
