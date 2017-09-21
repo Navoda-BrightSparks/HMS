@@ -10,6 +10,7 @@ const bodyParser = require('body-parser'),
 mongoose.Promise = global.Promise;
 
 var patient=require('./server/models/patient.model');
+var specimen=require('./server/models/SpecimanceModel');
 
 const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');
