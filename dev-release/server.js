@@ -13,6 +13,7 @@ var patient=require('./server/models/patient.model');
 
 const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');
+const LabRoute=require('./server/routes/LabRoute');
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.get('/', (req, res, next) => {
 
 app.use('/patients',DRoute);
 app.use('/patients',NRoute);
-
+app.use('/Lab',LabRoute);
 
 
 //queue
