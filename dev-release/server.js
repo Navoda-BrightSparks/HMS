@@ -11,7 +11,7 @@ mongoose.Promise = global.Promise;
 
 var patient=require('./server/models/patient.model');
 var specimen=require('./server/models/SpecimanceModel');
-
+var labTest=require('./server/models/labTest.model');
 const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');
 const LabRoute=require('./server/routes/LabRoute');
