@@ -11,8 +11,15 @@ const labTestSchema = new Schema({
     name: {
         type: String
     },
-    elements:{
-        type: Array
+    Category:{
+        type: String
+    }, minAge:{
+        type: Number
+    }, maxAge:{
+        type: Number
+    },
+    unit:{
+        type: String
     }
 
 

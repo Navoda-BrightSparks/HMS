@@ -4,18 +4,27 @@
         <div class="col-xs-6">
             <div class="input-group">
 
-                <span class="input-group-addon">Lab test </span>
-                <input type="text" class="form-control" required ng-model="labTest"/>
-
-                <span class="input-group-addon">Elements</span>
-                <input type="text" class="form-control" required ng-model="labTest">
+                <span class="input-group-addon">Alergy *</span>
+                <input type="text" class="form-control" required ng-model="labTest.name"/>
 
             </div>
         </div>
     </div>
     <br>
 
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group">
 
+                <span class="input-group-addon">Remarks</span>
+                <textarea type="text" class="form-control" id="inputRemarks" name="Remarks" placeholder=""
+                          ng-model="labTest.Category">
+                            </textarea>
+            </div>
+        </div>
+    </div>
+    <br>
 
 </div>
 <br>
@@ -30,7 +39,7 @@
 <div class="row">
     <div class="col-xs-6">
         <div class="input-group">
-            <button type="submit" class="btn btn-primary" ng-click="addlabTest()">Save</button>
+            <button type="submit" class="btn btn-primary" ng-click="addlabTest(labTest)">Save</button>
             &nbsp;
             <button type="submit" class="btn btn-primary" ng-click="UpadatelabTest()">Update</button>
 
