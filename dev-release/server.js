@@ -3,6 +3,7 @@
 const Queue = require('queuejs');
 var queue = new Queue();
 var opdNo=0;
+
 const bodyParser = require('body-parser'),
     express = require('express'),
     mongoose = require('mongoose');
@@ -11,10 +12,20 @@ mongoose.Promise = global.Promise;
 
 var patient=require('./server/models/patient.model');
 var specimen=require('./server/models/SpecimanceModel');
+<<<<<<< HEAD
 var labTest=require('./server/models/labTest.model');
+=======
+var employee=require('./server/models/employee.model');
+var visit=require('./server/models/visit.model');
+var alergy=require('./server/models/Alergy.model');
+var lab=require('./server/models/labTest.model');
+
+>>>>>>> 1735638da3abc53a5288bf1dd9f4c3401aedcbab
 const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');
 const LabRoute=require('./server/routes/LabRoute');
+const EmployeeRoute=require('./server/routes/employee.route.js');
+const  DashRoute=require('./server/routes/dashboard.route.js');
 
 const app = express();
 
@@ -35,7 +46,8 @@ app.get('/', (req, res, next) => {
 app.use('/patients',DRoute);
 app.use('/patients',NRoute);
 app.use('/Lab',LabRoute);
-
+app.use('/employee',EmployeeRoute);
+app.use('/dashboard',DashRoute);
 
 //queue
 app.put('/queue',(req, res, next) => {

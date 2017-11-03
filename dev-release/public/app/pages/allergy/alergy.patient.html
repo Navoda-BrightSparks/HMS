@@ -5,50 +5,37 @@
             <div class="input-group">
 
                 <span class="input-group-addon">Alergy *</span>
-                <input type="text" class="form-control" required ng-model="labTest.name"/>
-
+                <input type="text" class="form-control" required ng-model="alergy.alergy"/>
 
             </div>
         </div>
     </div>
     <br>
 
-
+    <br>
     <div class="row">
         <div class="col-xs-6">
             <div class="input-group">
 
                 <span class="input-group-addon">Remarks</span>
                 <textarea type="text" class="form-control" id="inputRemarks" name="Remarks" placeholder=""
-                          ng-model="labTest.Category">
+                          ng-model="alergy.remarks">
                             </textarea>
             </div>
         </div>
     </div>
     <br>
 
-
 </div>
-<br>
-
-
-<br/>
-
-<br>
-
 
 <br> <br>
 <div class="row">
     <div class="col-xs-6">
         <div class="input-group">
-
-            <button type="submit" class="btn btn-primary" ng-click="addlabTest()">Save</button>
-
-            <button type="submit" class="btn btn-primary" ng-click="addlabTest(labTest)">Save</button>
-
-            <button type="submit" class="btn btn-primary" ng-click="UpadatelabTest()">Update</button>
-
-         
+            <button type="submit" class="btn btn-primary" ng-hide="button" ng-click="AddAlergy(patient._id,alergy)">Save</button>
+            &nbsp;
+            <button type="submit" class="btn btn-primary" ng-hide="!button" ng-click="EditAlergies(alergy._id,alergy)">Update</button>
+            &nbsp;
             <button type="reset" class='btn'>Cancel</button>
 
         </div>
@@ -65,26 +52,28 @@
 
 <div class="" id="collapseExample" aria-expanded="false">
     <div class="col-md-12">
-        <div >
+        <div>
             <table class="table">
                 <thead>
                 <tr>
 
-                    <th>Lab test</th>
-
+                    <th>Alergy</th>
+                    <th>Remarks</th>
                     <th></th>
 
-                    <th></th>
+
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="x in labTest.labTest">
-                    <td>{{x.labTest}}</td>
+                <tr ng-repeat="x in patient.Alergies">
+                    <td>{{x.alergy}}</td>
+                    <td>{{x.remarks}}</td>
 
 
+                    <td>
+                        <button type="button" class="btn btn-warning" ng-click="UpadateAlergy(x._id)">Edit</button>
+                    </td>
 
-                    <td>   <button type="button" class="btn btn-warning" ng-click="UpadatelabTest(x._id)">Edit</button></td>
-                    <td>   <button type="submit" class="btn btn-danger" ng-click="DeletelabTest(x._id)">Delete</button></td>
                 </tr>
                 </tbody>
             </table>

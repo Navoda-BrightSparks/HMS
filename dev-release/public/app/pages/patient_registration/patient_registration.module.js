@@ -17,7 +17,17 @@
                     icon: 'ion-android-home',
                     order: 1,
                 },
-            });
+            }).state('edit_patient', {
+            url: '/patients/:id',
+            templateUrl: 'app/pages/patient_registration/editPatient.html',
+            controller:'PatientRegController'
+
+
+        })
+
+
+
+        ;
     }
 
 })();

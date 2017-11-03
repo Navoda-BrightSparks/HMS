@@ -38,14 +38,14 @@
         </thead>
         <tbody>
         <tr ng-repeat="x in patients">
-            <td>{{x.HIN}}</td>
+            <td ng-click="editPatient(x._id)">{{x.HIN}}</td>
             <td ng-click="goDash(x.HIN)">{{x.firstName}}</td>
             <td>{{x.NIC}}</td>
             <td>{{x.phone}}</td>
             <td>{{x.Birthday.slice(0,10)}}</td>
             <td>{{x.Address}}</td>
-          <!--  <td><button class="button" ng-click="newVisit(x._id)">Create Visit</button></td>-->
 
+            <td><button class="btn btn-primary" ng-click="addAllergy(x._id)">Alergies</button></td>
             <td><button class="btn btn-primary" ng-click="addToQueue(x)">queue</button></td>
         </tr>
         </tbody>

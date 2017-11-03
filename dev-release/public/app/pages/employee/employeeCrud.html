@@ -1,0 +1,79 @@
+<form name="userForm" novalidate ng-submit="addEmployee(nemployee)">
+
+    <div class="modal-example">
+        <div class="box-header with-border">
+            <h3 class="box-title">Employee Personal Details </h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.fname.$invalid && !userForm.fname.$pristine }">
+                    <span class="input-group-addon">First Name</span>
+                    <input type="text" class="form-control"  name="fname" ng-model="nemployee.fname"  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.age.$invalid && !userForm.age.$pristine }">
+                    <span class="input-group-addon">Age</span>
+                    <input type="number" class="form-control"  name="age" ng-model="nemployee.age"  ng-required="required" ng-pattern="/^[1-100\s]*$/"/>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                    <p class="input-group" ng-class="{ 'has-error' : userForm.jdate.$invalid && !userForm.jdate.$pristine }">
+                        <span class="input-group-addon">Join Date</span>
+                        <input type="date" ng-required="required" ng-model="nemployee.joinDate" class="form-control" />
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.lname.$invalid && !userForm.lname.$pristine }">
+                    <span class="input-group-addon">Last Name</span>
+                    <input type="text" class="form-control"  name="lname" ng-model="nemployee.lastName"  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <span class="input-group-addon">Gender</span>
+                    <select class="form-control" ng-model="nemployee.gender"  ng-required="required">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.nic.$invalid && !userForm.nic.$pristine }">
+                    <span class="input-group-addon">NIC</span>
+                    <input type="text" class="form-control" name="nic" ng-model="nemployee.NIC"  ng-pattern="/^\d{9}(v|V)$/"/>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="input-group"  ng-class="{ 'has-error' : userForm.number.$invalid && !userForm.number.$pristine }">
+                    <span class="input-group-addon">Phone Number</span>
+                    <input type="text" class="form-control" name="number" ng-model="nemployee.number">
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                    <span class="input-group-addon">Email</span>
+                    <input type="text" class="form-control" name="email" ng-model="nemployee.email">
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <button type="submit" id="btnsubmit" class="btn btn-primary"  ng-disabled="userForm.$invalid" >Save</button>
+            </div>
+        </div>
+    </div>
+</form>
