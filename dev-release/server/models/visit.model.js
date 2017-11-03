@@ -57,8 +57,15 @@ laborders:[{
         type:Date
     },
     comment:{
+        type:String},
+    result:{
         type:String
-    }}
+    },
+    verify:{
+        type:Boolean,default:false
+    }
+
+    }
 ]
 ,
     prescription:[{

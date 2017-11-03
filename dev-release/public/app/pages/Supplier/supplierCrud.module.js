@@ -1,21 +1,18 @@
-/**
- * Created by admin on 9/20/2017
- */
 
 (function () {
     'use strict';
 
-    angular.module('LAB.labTest', ['ngRoute'])
+    angular.module('OPD.supplierCrud', ['ngRoute'])
         .config(routeConfig);
 
     /** @ngInject */
     function routeConfig($stateProvider) {
         $stateProvider
-            .state('labTestManagement', {
-                url: '/labTest',
-                templateUrl: 'app/pages/labTest/labTest.html',
-                controller:'labTestCtrl',
-                title: 'Lab Tests',
+            .state('supplierCrud', {
+                url: '/registration',
+                templateUrl: 'app/pages/Supplier/supplierCrud.html',
+                controller:'SupplierCrudController',
+                title: 'Supplier registration',
                 sidebarMeta: {
                     icon: 'ion-android-home',
                     order: 1,

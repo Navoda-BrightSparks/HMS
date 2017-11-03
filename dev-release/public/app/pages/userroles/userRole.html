@@ -1,0 +1,79 @@
+<form name="userRoleForm" novalidate >
+
+    <div class="modal-example">
+        <div class="box-header with-border">
+            <h3 class="box-title">Employee Roles Details </h3>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userRoleForm.urole.$invalid && !userRoleForm.urole.$pristine }">
+                    <span class="input-group-addon">User Role   </span>
+                    <input type="text" class="form-control"  name="description" ng-model=""  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userRoleForm.description.$invalid && !userRoleForm.description.$pristine }">
+                    <span class="input-group-addon">Description   </span>
+                    <input type="text" class="form-control"  name="description" ng-model=""  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <button type="submit" id="saveUserRole" class="btn btn-primary"  ng-disabled="userRoleForm.$invalid" >Add userRole</button>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <button type="submit" id="updateUserRole" class="btn btn-info"  ng-disabled="userRoleForm.$invalid" >Update</button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+</form>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading"> <strong> Employee details</strong></div>
+    <table class="table">
+        <tr>
+
+
+            <th>User Role</th>
+            <th>Description</th>
+
+        </tr>
+        <tr>
+
+            <td>Doctor</td>
+            <td>nothing</td>
+
+            <td>
+                <a href=""><button type="button" class="btn btn-warning">Edit</button></a>
+                <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
+            </td>
+        </tr>
+
+    </table>
+
+
+</div>

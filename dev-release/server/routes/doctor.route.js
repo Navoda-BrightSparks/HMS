@@ -58,8 +58,7 @@ Router.get('/', (req, res) => {
             console.error(err);
             res.sendStatus(500);
         });
-    };
-
+    }
 });
 //get patient by id
 Router.get('/:id', (req, res) => {
@@ -86,7 +85,7 @@ Router.post('/', (req, res) => {
 
 Router.post('/:id/visits', (req, res) => {
     let visit = new visitModel(req.body);
-    console.log(req.body.date)
+    console.log(req.body.date);
     const patientID = req.params.id;
     var visitObjid;
     visit.patient = patientID;

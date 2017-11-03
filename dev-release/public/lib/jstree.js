@@ -805,7 +805,7 @@
 									return false;
 								}
 							}, this));
-							if(end) { return; }
+							if(end) {  }
 						}
 					}, this))
 				// THEME RELATED
@@ -7782,7 +7782,7 @@
 								for (k in t[c].li_attr) {
 									if (t[c].li_attr.hasOwnProperty(k)) {
 										if (k === 'id') {
-											continue;
+
 										}
 										else if (m[dpc[i]].li_attr[k] === undefined) {
 											m[dpc[i]].li_attr[k] = t[c].li_attr[k];
@@ -7797,7 +7797,7 @@
 								for (k in t[c].a_attr) {
 									if (t[c].a_attr.hasOwnProperty(k)) {
 										if (k === 'id') {
-											continue;
+
 										}
 										else if (m[dpc[i]].a_attr[k] === undefined) {
 											m[dpc[i]].a_attr[k] = t[c].a_attr[k];
@@ -7968,7 +7968,7 @@
 				for (k in t[old_type].li_attr) {
 					if (t[old_type].li_attr.hasOwnProperty(k)) {
 						if (k === 'id') {
-							continue;
+
 						}
 						else if (k === 'class') {
 							m[obj.id].li_attr['class'] = (m[obj.id].li_attr['class'] || '').replace(t[old_type].li_attr[k], '');
@@ -7985,7 +7985,7 @@
 				for (k in t[old_type].a_attr) {
 					if (t[old_type].a_attr.hasOwnProperty(k)) {
 						if (k === 'id') {
-							continue;
+
 						}
 						else if (k === 'class') {
 							m[obj.id].a_attr['class'] = (m[obj.id].a_attr['class'] || '').replace(t[old_type].a_attr[k], '');
@@ -8010,7 +8010,7 @@
 				for (k in t[type].li_attr) {
 					if (t[type].li_attr.hasOwnProperty(k)) {
 						if (k === 'id') {
-							continue;
+
 						}
 						else if (m[obj.id].li_attr[k] === undefined) {
 							m[obj.id].li_attr[k] = t[type].li_attr[k];
@@ -8034,7 +8034,7 @@
 				for (k in t[type].a_attr) {
 					if (t[type].a_attr.hasOwnProperty(k)) {
 						if (k === 'id') {
-							continue;
+
 						}
 						else if (m[obj.id].a_attr[k] === undefined) {
 							m[obj.id].a_attr[k] = t[type].a_attr[k];

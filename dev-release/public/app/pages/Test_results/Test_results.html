@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+<div class="row">
+    <br/>
+    <div class="col-md-2">
+        <input type="text" class="form-control" placeholder="Search HIN" ng-model="HIN">
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary " ng-click="Search(HIN)">Search</button>
+    </div>
+
+    <div class="col-md-2">
+        <input type="text" class="form-control" placeholder="Search NIC" ng-model="NIC">
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary " ng-click="SearchNIC(NIC)">Search</button>
+    </div>
+
+</div>
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>PatientID</th>
+            <th>visit ID</th>
+            <th>lab orders</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="order in labOrders">
+            <td ng-click="editPatient(x._id)">{{order.patient.HIN}}</td>
+            <td ng-click="editPatient(x._id)">{{order.vid}}</td>
+            <td >
+               <table class="table table-hover">
+                   <thead style="color: #0b58a2">
+               <tr>
+                   <th>TestName</th>
+                   <th>Due date</th>
+                   <th>prority</th>
+                   <th>Results Entered</th>
+
+                   <th></th>
+
+                   <th></th>
+               </tr>
+               </thead><tbody><tr  ng-repeat="laborder in order.laborders">
+                   <td> {{laborder.testName}}</td>
+
+                   <td> {{laborder.duedate}}</td>
+                   <td> {{laborder.priority}}</td>
+                   <td> {{laborder.verify}}</td>
+                   <td>  <button class="btn btn-primary" ng-disabled="laborder.verify" type="button" ng-click="open('app/pages/Test_results/resultmodal.html','lg',laborder,order.vid)" data-toggle="modal" data-target="#myModal">
+                       Enter Results
+                   </button></td>
+                   <td><button class="btn btn-primary" ng-disabled="!laborder.verify">Report</button></td>
+               </tr></tbody>
+               </table>
+
+                </td>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
