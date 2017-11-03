@@ -15,6 +15,7 @@ var specimen=require('./server/models/SpecimanceModel');
 var employee=require('./server/models/employee.model');
 var visit=require('./server/models/visit.model');
 var alergy=require('./server/models/Alergy.model');
+var lab=require('./server/models/labTest.model');
 
 const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');

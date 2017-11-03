@@ -4,7 +4,7 @@ const express = require('express'),
 mongoose.set('debug', false);
 
 const SpecimanModel = mongoose.model('speciman');
-/*const labTest = mongoose.model('labTest');*/
+const labTest = mongoose.model('labTest');
 
 const Router = express.Router();
 
@@ -49,8 +49,8 @@ Router.put('/specimen/:id', (req, res) => {
 
 
 Router.post('/labTest', (req, res) => {
-    var labTest = new labTest(req.body);
-    labTest.save().then(labTest => {
+    var labTestmodel = new labTest(req.body);
+    labTestmodel.save().then(labTest => {
         console.log(labTest);
         res.json(labTest);
     }).catch(err => {
