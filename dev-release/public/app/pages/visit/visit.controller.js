@@ -24,7 +24,7 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
 
         function getPatient() {
             if($stateParams.id){
-                console.log($stateParams.id);
+
                 PatientService.getById($stateParams.id).then(patient => {
                     $scope.patient = patient;
                     setVisitEnv();

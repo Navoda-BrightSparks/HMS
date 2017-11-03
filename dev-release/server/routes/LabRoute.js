@@ -67,21 +67,27 @@ Router.get('/labTest',(req,res)=>{
         res.sendStatus(500);
     });
 })
+//delete labtest
+Router.delete('/removeLabTest/:id', (req, res) => {
 
-Router.delete('/labTest/:id', (req, res) => {
-    //const aid = req.params.id;
+    labTest.findByIdAndRemove(req.params.id)
+.then(() => {
+    res.sendStatus(200);
+}).catch(err => {
 
-    labTest.findById(req.params.id).then(labTest => {
-        //const pid = alergy.patient;
-        return PatientModel.findByIdAndUpdate(pid, {$pull: {"Alergies": alergy._id}})
-    }).then(() => {
-        return labTest.findByIdAndRemove(req.params.id);
-    }).then(() => {
-        res.sendStatus(200);
-    }).catch(err => {
-        console.error(err);
-        res.sendStatus(500);
-    });
+    res.sendStatus(500);
 });
 
+
+});
+//update labtest
+Router.put('/editlabTest/:id', (req, res) => {
+
+    labTest.findByIdAndUpdate(req.params.id,req.body,{new: true}, function(err, labtest) {
+        if (err)
+            res.send(err);
+
+        res.send(labtest)
+    });
+});
 module.exports = Router;
