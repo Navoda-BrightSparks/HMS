@@ -9,7 +9,7 @@
     function routeConfig($stateProvider) {
         $stateProvider
             .state('supplierCrud', {
-                url: '/registration',
+                url: '/supplier',
                 templateUrl: 'app/pages/Supplier/supplierCrud.html',
                 controller:'SupplierCrudController',
                 title: 'Supplier registration',
