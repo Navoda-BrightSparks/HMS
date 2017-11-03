@@ -12,7 +12,7 @@
                 url: '/Specimens',
                 templateUrl: 'app/pages/specimen/specimen.html',
                 controller:'specimenCtrl',
-                title: 'Specimen Management',
+                title: 'Specimens',
                 sidebarMeta: {
                     icon: 'ion-android-home',
                     order: 1,
