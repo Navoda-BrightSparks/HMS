@@ -1,0 +1,79 @@
+<div class="box-body">
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="input-group">
+
+                <span class="input-group-addon">Lab test </span>
+                <input type="text" class="form-control" required ng-model="labTest"/>
+
+                <span class="input-group-addon">Elements</span>
+                <input type="text" class="form-control" required ng-model="labTest">
+
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+
+</div>
+<br>
+
+
+<br/>
+
+<br>
+
+
+<br> <br>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="input-group">
+            <button type="submit" class="btn btn-primary" ng-click="addlabTest()">Save</button>
+            &nbsp;
+            <button type="submit" class="btn btn-primary" ng-click="UpadatelabTest()">Update</button>
+
+            &nbsp;
+            <button type="reset" class='btn'>Cancel</button>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#collapseExample"
+                aria-controls="collapseExample">+
+        </button>
+    </div>
+</div>
+
+<div class="" id="collapseExample" aria-expanded="false">
+    <div class="col-md-12">
+        <div >
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th>Lab test</th>
+
+                    <th></th>
+
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in labTest.labTest">
+                    <td>{{x.labTest}}</td>
+
+
+
+                    <td>   <button type="button" class="btn btn-warning" ng-click="UpadatelabTest(x._id)">Edit</button></td>
+                    <td>   <button type="submit" class="btn btn-danger" ng-click="DeletelabTest(x._id)">Delete</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
