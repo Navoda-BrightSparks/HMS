@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box-body">
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Test Name *</span>
+                        <input type="text" class="form-control" required ng-model="labTest.name"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Category</span>
+                        <input type="text" class="form-control" id="inputRemarks" name="Remarks" placeholder=""
+                               ng-model="labTest.Category">
+                        </input>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Min age*</span>
+                        <input type="number" class="form-control" required ng-model="labTest.minAge"/>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Max age*</span>
+                        <input type="number" class="form-control" required ng-model="labTest.maxAge"/>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Unit*</span>
+                        <input type="text" class="form-control" required ng-model="labTest.unit"/>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary" ng-hide="button" ng-click="addlabTest(labTest)">Save</button>
+
+                        <button type="submit" class="btn btn-primary" ng-hide="!button" ng-click="UpadatelabTest(labTest)">Update</button>
+
+                        <button type="reset" class='btn'>Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-lg-6">
+        <div class="" id="collapseExample" aria-expanded="false">
+            <div class="col-md-12">
+                <div >
+                    <table class="table">
+                        <thead>
+                        <tr>
+
+                            <th>Lab test</th>
+                            <th>Category</th>
+                            <th>Minimum Age</th>
+                            <th>Max Age</th>
+                            <th> Unit</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="labTest in LabTests">
+                            <td>{{labTest.name}}</td>
+                            <td>{{labTest.Category}}</td>
+                            <td>{{labTest.minAge}}</td>
+                            <td>{{labTest.maxAge}}</td>
+                            <td>{{labTest.unit}}</td>
+                            <td>   <button type="button" class="btn btn-warning"  ng-click="editlabTest(labTest)">Edit</button></td>
+                            <td>   <button type="submit" class="btn btn-danger" ng-click="DeletelabTest(labTest._id)">Delete</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

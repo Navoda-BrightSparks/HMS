@@ -8,8 +8,8 @@ const express = require('express'),
 mongoose.set('debug', false);
 
 const PatientModel = mongoose.model('Patient'),
-    visitModel = mongoose.model('Visit');
-    // AlergyModel=mongoose.model('Alergy'),
+    visitModel = mongoose.model('Visit'),
+     AlergyModel=mongoose.model('Alergy');
 
 
 const Router = express.Router();
@@ -63,7 +63,7 @@ Router.get('/', (req, res) => {
 });
 //get patient by id
 Router.get('/:id', (req, res) => {
-    PatientModel.findById(req.params.id).populate('visits').exec().then(patient => {
+    PatientModel.findById(req.params.id).populate('visits').populate('Alergies').exec().then(patient => {
         res.json(patient);
     }).catch(err => {
         console.error(err);
@@ -86,6 +86,7 @@ Router.post('/', (req, res) => {
 
 Router.post('/:id/visits', (req, res) => {
     let visit = new visitModel(req.body);
+    console.log(req.body.date)
     const patientID = req.params.id;
     var visitObjid;
     visit.patient = patientID;
@@ -111,6 +112,73 @@ Router.put('/examination/:id', (req, res) => {
     }).catch(err=>{
         if (err)
             res.send(err)
+    });
+});
+//add prescription
+Router.put('/prescription/:id', (req, res) => {
+
+    let data=req.body;
+    visitModel.findByIdAndUpdate(req.params.id, {$push: {"prescription":req.body}}).exec().then(status=>{
+        res.send(status);
+    }).catch(err=>{
+        if(err){
+            res.send(err);
+        }
+    })
+    ;
+
+
+});
+//lab order
+Router.put('/labOrder/:id', (req, res) => {
+    console.log(req.body);
+    visitModel.findByIdAndUpdate(req.params.id, {$push: {"laborders": req.body}}).exec().then(visit=>{
+        res.send(visit);
+    }).catch(err=>{
+        if (err)
+            res.send(err)
+    });
+});
+//alergies
+
+Router.get('/Alergies/:id', (req, res) => {
+    AlergyModel.findById(req.params.id).populate('Alergies').exec().then(alergy => {
+        res.json(alergy || {});
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
+Router.put('/alergies/:id', (req, res) => {
+    AlergyModel.findById(req.params.id, function(err, updatedalergy) {
+        if (err)
+            res.send(err);
+
+        updatedalergy.alergy = req.body.alergy;
+        updatedalergy.remarks = req.body.remarks;
+
+        updatedalergy.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json(updatedalergy);
+        });
+    });
+});
+
+Router.post('/:id/alergies', (req, res) => {
+    let alergy = new AlergyModel(req.body);
+    const patientID = req.params.id;
+    alergy.patient = patientID;
+    alergy.save().then(alergydb => {
+        return PatientModel.findByIdAndUpdate(patientID, {$push: {"Alergies": alergydb._id}})
+    }).then(() => {
+        return PatientModel.findById(patientID).populate('Alergies').exec();
+    }).then(patientDb => {
+        res.json(patientDb);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
     });
 });
 module.exports = Router;
