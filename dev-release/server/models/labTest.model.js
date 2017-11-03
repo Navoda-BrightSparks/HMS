@@ -11,6 +11,7 @@ const labTestSchema = new Schema({
     name: {
         type: String
     },
+
     Category:{
         type: String
     }, minAge:{
@@ -20,6 +21,7 @@ const labTestSchema = new Schema({
     },
     unit:{
         type: String
+
     }
 
 
