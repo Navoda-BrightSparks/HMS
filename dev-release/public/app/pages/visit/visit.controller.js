@@ -6,10 +6,12 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
             $scope.date = new Date();
             $scope.types = ["OPD", "Clinic"];
             $scope.addVisit = (id, visit) => {
-                var d = new Date();
-                var n = d.getTime();
-                visit.vid=n;
+                var date = new Date();
+                var time = date.getTime();
+                visit.vid=time;
+                visit.date=date;
                 PatientService.addVisit(id, visit).then((patient) => {
+                    console.log(visit.date)
                     console.log(patient);
                     $scope.patient = patient;
                     visit.complaint = '';
@@ -22,7 +24,7 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
 
         function getPatient() {
             if($stateParams.id){
-                console.log($stateParams.id);
+
                 PatientService.getById($stateParams.id).then(patient => {
                     $scope.patient = patient;
                     setVisitEnv();

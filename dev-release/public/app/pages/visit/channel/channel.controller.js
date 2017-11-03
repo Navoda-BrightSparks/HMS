@@ -2,19 +2,18 @@
 
 angular.module('OPD.channel').controller('ChannelController', ['$location','$scope','$stateParams', 'PatientService','toastr',
     function ($location,$scope,$stateParams, PatientService,toastr) {
-       $scope.treatments=["dressing","shortwave diathermy","hot wax bath to hands","eye exercies","collect laboratory sample","extraction","medication","baby feeding advice"];
-        $scope.injections=["BCG 1 dose"];
         $scope.laborders=["sam","fasting blood sugar","Random blood sugar","PPBS","Blood sugs","Urine Full report","Urine Sugar","PT-INR","Reticulocyte count","CSF full report","Aspiration fluid full report","Dengue IgG-IgM Ab"]
        $scope.priority=["high","medium","low"];
        $scope.frequencies=["B.i.d","tbd","tbdt"];
-       $scope.lab=[];
+       $scope.frequency="";
+       const reply=200;
         $scope.parseFloat = function(value){
             return parseFloat(value);
         };
         function getvisit() {
             PatientService.getVisitById($stateParams.id).then(visit => {
                 $scope.vvisit = visit;
-                console.log($scope.vvisit);
+
             });
         }
         function displayToast(message,title,type) {
@@ -38,33 +37,17 @@ angular.module('OPD.channel').controller('ChannelController', ['$location','$sco
         getvisit();
         $scope.addExamination=(id,Examination)=>{
             PatientService.addExamination(id,Examination).then(reply=>{
-                console.log(reply);
-                if(reply==200){
+
+                if(reply==reply){
                     displayToast('Success','Examinations saved successfully','success');
                 }
             });
         };
 
-        $scope.addInjection=(id,injection)=>{
-            PatientService.addInjection(id,injection).then(reply=>{
-                if(reply==200){
-                    displayToast('Success','Injection saved successfully','success');
-                }
-            });
-        };
-
-        $scope.addTreatment=(id,treatment)=>{
-            PatientService.addTreatment(id,treatment).then(reply=>{
-                if(reply==200){
-                    displayToast('Success','Treatment saved successfully','success');
-                }
-            });
-        };
         $scope.addLaborder=(id,lab)=>{
-            console.log(lab)
+            console.log(lab);
             PatientService.addLaborder(id,lab).then(reply=>{
-                $scope.lab.push(lab);
-                if(reply==200){
+                if(reply==reply){
                     displayToast('Success','Lab Orders saved successfully','success');
                 }
             });
@@ -84,7 +67,6 @@ angular.module('OPD.channel').controller('ChannelController', ['$location','$sco
                         }
                     }
                 }
-                console.log($scope.drugs);
             })
 
         };
@@ -99,43 +81,27 @@ angular.module('OPD.channel').controller('ChannelController', ['$location','$sco
             $scope.prescription = newDataList;
         };
         $scope.getname=function(name){
-            $scope.mname=name;
+            $scope.drugName=name;
         };
-        $scope.addMedicine=function () {
-            $scope.prescription.push({'drugname':$scope.mname,'frequency':$scope.l,'Period':$scope.g});
-            $scope.mname="";
-            $scope.g="";
-            $scope.l="";
+        $scope.addMedicine=function (frequency,drugname,period) {
+
+            $scope.prescription.push({'drugname':drugname,'frequency':frequency,'Period':period});
+            $scope.drugName="";
+            $scope.frequency="";
+            $scope.period="";
         }
         $scope.addprescription=(id,prescription)=>{
             var newDataList=[];
+
             PatientService.addprescription(id,prescription ).then(reply=>{
-                if(reply==200){
+                if(reply==reply){
                     $scope.prescription = newDataList;
-                    alert("Success");
+
+                    displayToast('Success','prescription saved successfully','success');
                 }
             });
         };
-        /*
-        $scope.addMedicine=function () {
-            console.log($scope.freq);
-            $scope.prescription.push({'drugname':$scope.mname,'Period':$scope.period,'frequency':$scope.freq});
-            console.log($scope.prescription);
-        };
-        $scope.addprescription=(id,prescription)=>{
-            console.log($scope.prescription);
-            var newDataList=[];
-            PatientService.addprescription(id,prescription ).then(reply=>{
-                if(reply===200){
-                    $scope.prescription = newDataList;
-                    displayToast('Success','Prescription saved successfully','success');
-                }
-            });
-        };*/
         $scope.print=function () {
             printJS({printable: $scope.prescription, properties: ['drugname', 'frequency', 'Period'], type: 'json'})
         };
-        $scope.printlab=function () {
-            printJS({printable: $scope.lab, properties: ['testName', 'priority', 'comment','duedate'], type: 'json'})
-        }
     }]);
