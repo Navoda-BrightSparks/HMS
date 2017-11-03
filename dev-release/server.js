@@ -18,6 +18,9 @@ var userRole=require('./server/models/userRolemodel');
 var userRole=require('./server/models/leaveform.model');
 
 var visit=require('./server/models/visit.model');
+
+var supplier=require('./server/models/supplier.model');
+
 var alergy=require('./server/models/Alergy.model');
 var lab=require('./server/models/labTest.model');
 
@@ -26,6 +29,7 @@ const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');
 const LabRoute=require('./server/routes/LabRoute');
 const EmployeeRoute=require('./server/routes/employee.route.js');
+const SupplierRoute=require('./server/routes/supplier.route.js');
 
 const userRoleRoute=require('./server/routes/userRole.route.js');
 const leaveRoute=require('./server/routes/leaveform.route.js');
@@ -39,12 +43,12 @@ const app = express();
 app.use('/', express.static(__dirname+'/public'));
 app.use('/modules', express.static(__dirname+'/../bower_components'));
 app.use(bodyParser.json());
-mongoose.connect('mongodb://127.0.0.1:27017/PatientProfile', err => {
+/*mongoose.connect('mongodb://127.0.0.1:27017/PatientProfile', err => {
     if (err) {
         console.log(err);
         process.exit(1);
     }
-});
+});*/
 
 app.get('/', (req, res, next) => {
     res.sendFile(__dirname + '/public/index.html');
@@ -54,6 +58,7 @@ app.use('/patients',DRoute);
 app.use('/patients',NRoute);
 app.use('/Lab',LabRoute);
 app.use('/employee',EmployeeRoute);
+app.use('/supplier',SupplierRoute);
 
 app.use('/userRole',userRoleRoute);
 app.use('/leaveform',leaveRoute);
