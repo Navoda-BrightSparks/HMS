@@ -7,16 +7,16 @@ const express = require('express'),
 
 mongoose.set('debug', false);
 
-const employeeModel = mongoose.model('userRole');
+const leaveModel = mongoose.model('leaveform');
 
 const Router = express.Router();
 
 
-Router.post('/userRoleAdd', (req, res) => {
-    var ur = new userRoleModel(req.body);
-    ur.save().then(userRole => {
-        console.log(userRole);
-        res.json(userRole);
+Router.post('/leaveformManage', (req, res) => {
+    var leave = new leaveModel(req.body);
+    leave.save().then(leave => {
+        console.log(leave);
+        res.json(leave);
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
@@ -25,8 +25,8 @@ Router.post('/userRoleAdd', (req, res) => {
 
 Router.get('/',(req,res)=>{
 
-    userRoleModel.find().exec().then(userRole => {
-        res.json(userRole);
+    leaveModel.find().exec().then(leave => {
+        res.json(leave);
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
@@ -35,17 +35,17 @@ Router.get('/',(req,res)=>{
 
 
 Router.put('/employeeUpdate/:id', (req, res) => {
-    userRoleModel.findById(req.params.id, function(err, userRole) {
+    leaveModel.findById(req.params.id, function(err, leave) {
         if (err)
             res.send(err);
 
-        userRole.userRole = req.body.userRole;
+        leave.leave = req.body.leave;
 
-        updateUserRole.save(function(err) {
+        updateLeave.save(function(err) {
             if (err)
                 res.send(err);
 
-            res.json(updateUserRole);
+            res.json(updateLeave);
         });
     });
 });

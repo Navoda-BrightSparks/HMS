@@ -13,15 +13,26 @@ mongoose.Promise = global.Promise;
 var patient=require('./server/models/patient.model');
 var specimen=require('./server/models/SpecimanceModel');
 var employee=require('./server/models/employee.model');
+
+var userRole=require('./server/models/userRolemodel');
+var userRole=require('./server/models/leaveform.model');
+
 var visit=require('./server/models/visit.model');
 var alergy=require('./server/models/Alergy.model');
 var lab=require('./server/models/labTest.model');
+
 
 const  DRoute=require('./server/routes/doctor.route.js');
 const  NRoute=require('./server/routes/nurse.route.js');
 const LabRoute=require('./server/routes/LabRoute');
 const EmployeeRoute=require('./server/routes/employee.route.js');
+
+const userRoleRoute=require('./server/routes/userRole.route.js');
+const leaveRoute=require('./server/routes/leaveform.route.js');
+
+
 const  DashRoute=require('./server/routes/dashboard.route.js');
+
 
 const app = express();
 
@@ -43,7 +54,13 @@ app.use('/patients',DRoute);
 app.use('/patients',NRoute);
 app.use('/Lab',LabRoute);
 app.use('/employee',EmployeeRoute);
+
+app.use('/userRole',userRoleRoute);
+app.use('/leaveform',leaveRoute);
+
+
 app.use('/dashboard',DashRoute);
+
 
 //queue
 app.put('/queue',(req, res, next) => {

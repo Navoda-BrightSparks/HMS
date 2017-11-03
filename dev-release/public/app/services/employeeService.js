@@ -3,7 +3,8 @@
  */
 'use strict';
 
-angular.module('BlurAdmin.OPD').factory('EmployeeService', ['$http',
+angular.module('BlurAdmin.OPD')
+    .factory('EmployeeService', ['$http',
     function ($http) {
         return {
             get: () => $http.get('/employee').then(response => response.data),
