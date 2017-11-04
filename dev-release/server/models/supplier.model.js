@@ -10,7 +10,10 @@ const supModelSchema = new Schema({
         type: String
 
     },
+    sid: {
+        type: String
 
+    },
     lname: {
         type: String
     },

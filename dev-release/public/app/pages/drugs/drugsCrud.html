@@ -1,0 +1,93 @@
+<form name="userForm" novalidate>
+
+    <div class="modal-example">
+        <div class="box-header with-border">
+            <h3 class="box-title">Drug Details </h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.fname.$invalid && !userForm.fname.$pristine }">
+                    <span class="input-group-addon">Drug No</span>
+                    <input type="text" class="form-control"  name="dno" ng-model="drug.drugno"  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.fname.$invalid && !userForm.fname.$pristine }">
+                    <span class="input-group-addon">Drug Name</span>
+                    <input type="text" class="form-control"  name="fname" ng-model="drug.drugname"  ng-required="required" ng-pattern="/^[a-zA-Z\s]*$/"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.fname.$invalid && !userForm.fname.$pristine }">
+                    <span class="input-group-addon">Drug Type</span>
+                    <select class="form-control" ng-model="drug.drugtype"  ng-required="required">
+                        <option>Capsule</option>
+                        <option>Syrup</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="input-group" ng-class="{ 'has-error' : userForm.fname.$invalid && !userForm.fname.$pristine }">
+                    <span class="input-group-addon">Unit Price</span>
+                    <input type="number" class="form-control"  name="fname" ng-model="drug.unitprice"  ng-required="required" />
+                </div>
+            </div>
+
+
+        </div>
+
+
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="input-group">
+                <button type="submit" id="btnsubmit" class="btn btn-primary"   ng-click="addDrug(drug)" >Save</button>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <button type="submit" id="btnupdate" class="btn btn-primary"  ng-disabled="userForm.$invalid" ng-click="UpdateSupplier(supplier)">Update</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>NDC No</th>
+                <th>Drug Name</th>
+                <th>Type</th>
+                <th>UnitPrice</th>
+
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in druglist">
+                <td>{{x.drugname}}</td>
+                <td>{{x.company}}</td>
+                <td>{{x.address}}</td>
+                <td>{{x.phoneNo}}</td>
+                <td>{{x.email}}</td>
+
+                <!--  <td><button class="button" ng-click="newVisit(x._id)">Create Visit</button></td>-->
+
+                <td><button class="btn btn-primary" ng-click="">edit</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</form>
+
+
+
+
+
+
+
