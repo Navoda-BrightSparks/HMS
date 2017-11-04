@@ -16,7 +16,7 @@ var patient =
     civilStatus : "single",
     Address : "bbbkjmlbb",
     Alergies : []
-}
+};
 
 
 

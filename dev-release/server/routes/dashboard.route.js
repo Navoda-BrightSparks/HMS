@@ -15,7 +15,7 @@ const PatientModel = mongoose.model('Patient'),
 const Router = express.Router();
 //-----------DASHBOARD-----------------
 Router.get('/', (req, res) => {
-    console.log(req.query.info)
+    console.log(req.query.info);
     if (req.query.info) {
         PatientModel.findOne({HIN: req.query.info}).populate('Alergies').populate('visits').exec().then(patient => {
             res.json(patient || {});
@@ -49,8 +49,7 @@ Router.get('/', (req, res) => {
             res.json(visit);
         }).catch(err=>{res.send(err);});
     }
-       /* */
-        // get current results
+
 
 });
 //-----------------------------------------

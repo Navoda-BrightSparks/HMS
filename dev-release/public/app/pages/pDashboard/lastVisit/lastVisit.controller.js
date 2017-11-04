@@ -10,7 +10,7 @@
         console.log($stateParams.hin);
         DashboardService.getRecentVisit($stateParams.hin).then(visit=>{
             $scope.lastVisit=visit[0].visit;
-            console.log("last visit")
+            console.log("last visit");
             console.log($scope.lastVisit);
         });
     }

@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('OPD.channel').controller('ChannelController', ['$location','$scope','$stateParams', 'PatientService','toastr',
-    function ($location,$scope,$stateParams, PatientService,toastr) {
-        $scope.laborders=["sam","fasting blood sugar","Random blood sugar","PPBS","Blood sugs","Urine Full report","Urine Sugar","PT-INR","Reticulocyte count","CSF full report","Aspiration fluid full report","Dengue IgG-IgM Ab"]
+angular.module('OPD.channel').controller('ChannelController', ['$location','$scope','$stateParams', 'PatientService','toastr','labService',
+    function ($location,$scope,$stateParams, PatientService,toastr,labService) {
+        $scope.laborders=["sam","fasting blood sugar","Random blood sugar","PPBS","Blood sugs","Urine Full report","Urine Sugar","PT-INR","Reticulocyte count","CSF full report","Aspiration fluid full report","Dengue IgG-IgM Ab"];
        $scope.priority=["high","medium","low"];
        $scope.frequencies=["B.i.d","tbd","tbdt"];
        $scope.frequency="";
@@ -16,6 +16,13 @@ angular.module('OPD.channel').controller('ChannelController', ['$location','$sco
 
             });
         }
+        function getLabTests() {
+            labService.getLabTestNames().then(LabTests=>{
+console.log(LabTests);
+                $scope.LabTests=LabTests;
+            })
+        }
+        getLabTests();
         function displayToast(message,title,type) {
             toastr.success(title, message, {
                 "autoDismiss": true,
@@ -45,7 +52,8 @@ angular.module('OPD.channel').controller('ChannelController', ['$location','$sco
         };
 
         $scope.addLaborder=(id,lab)=>{
-            console.log(lab);
+lab.testName=lab.testName.name;
+console.log(lab.testName);
             PatientService.addLaborder(id,lab).then(reply=>{
                 if(reply==reply){
                     displayToast('Success','Lab Orders saved successfully','success');
@@ -89,7 +97,7 @@ angular.module('OPD.channel').controller('ChannelController', ['$location','$sco
             $scope.drugName="";
             $scope.frequency="";
             $scope.period="";
-        }
+        };
         $scope.addprescription=(id,prescription)=>{
             var newDataList=[];
 

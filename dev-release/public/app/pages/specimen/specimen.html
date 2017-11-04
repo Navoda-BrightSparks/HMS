@@ -1,48 +1,81 @@
-<form name="userForm" novalidate >
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box-body">
 
-    <div class="box-body">
-        <br>
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="input-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
 
-                    <span class="input-group-addon">Specimen </span>
-                    <input type="text" class="form-control" required ng-model="speciman"/>
+                        <span class="input-group-addon">Specimen Name *</span>
+                        <input type="text" class="form-control" required ng-model="specimen.name"/>
 
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+
+                        <span class="input-group-addon">Description</span>
+                        <input type="text" class="form-control" id="inputRemarks" name="Remarks" placeholder=""
+                               ng-model="specimen.description">
+                        </input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <button type="submit" class="btn btn-primary" ng-hide="button" ng-click="addSpecimen(specimen)">Save</button>
+                        &nbsp;
+                        <button type="submit" class="btn btn-primary" ng-hide="!button" ng-click="UpadateSpecimen(specimen)">Update</button>
+                        &nbsp;
+                        <button type="reset" class='btn'>Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="col-lg-6">
+        <div class="" id="collapseExample" aria-expanded="false">
+            <div class="col-md-12">
+                <div >
+                    <table class="table">
+                        <thead>
+                        <tr>
+
+                            <th>Specimen</th>
+                            <th>Description</th>
+
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="specs in specimens">
+                            <td>{{specs.name}}</td>
+                            <td>{{specs.description}}</td>
+
+                            <td>   <button type="button" class="btn btn-warning"  ng-click="editSpecimen(specs)">Edit</button></td>
+                            <td>   <button type="submit" class="btn btn-danger" ng-click="DeleteSpecimen(specs._id)">Delete</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="input-group">
-                <button type="submit" class="btn btn-primary" ng-click="addSpecimen()">Save</button>
-                &nbsp;
-                <button type="submit" class="btn btn-primary" ng-click="UpadateSpecimen()">Update</button>
-                &nbsp;
-                <button type="reset" class='btn'>Cancel</button>
+</div>
 
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#collapseExample"
-                    aria-controls="collapseExample">+
-            </button>
-        </div>
-    </div>
 
-    <div class="" id="collapseExample" aria-expanded="false">
-        <div class="col-md-12">
-            <div >
 
-            </div>
-        </div>
-    </div>
-</form>
+
+
+
+

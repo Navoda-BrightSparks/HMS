@@ -1809,7 +1809,7 @@ angular.module('xeditable').factory('editablePromiseCollection', ['$q', function
         } else if (angular.isString(result)){
           this.hasString = true;
         } else { //result === true || result === undefined || result === null
-          return;
+
         }
       },
       //callbacks: onTrue, onFalse, onString

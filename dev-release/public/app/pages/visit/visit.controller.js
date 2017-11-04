@@ -11,7 +11,7 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
                 visit.vid=time;
                 visit.date=date;
                 PatientService.addVisit(id, visit).then((patient) => {
-                    console.log(visit.date)
+                    console.log(visit.date);
                     console.log(patient);
                     $scope.patient = patient;
                     visit.complaint = '';
@@ -36,12 +36,11 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
 
         getPatient();
 
-        $scope.AddAlergy = (id, al) => {
-            PatientService.addAlergy(id, al).then((patient) => {
-                console.log(al);
+  /*      $scope.AddAlergy = (id, allergy) => {
+            PatientService.addAlergy(id, allergy).then((patient) => {
                 $scope.patient = patient;
-                al.alergy = '';
-                al.remarks = '';
+                allergy.alergy = '';
+                allergy.remarks = '';
                 getPatient();
             });
 
@@ -52,11 +51,11 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
                 $scope.al = alergy;
             });
         };
-        $scope.EditAlergies = (aid, al) => {
-            PatientService.updateAlergy(aid, al).then((alergy) => {
-                console.log(al);
-                al.alergy = '';
-                al.remarks = '';
+        $scope.EditAlergies = (aid, allergy) => {
+            PatientService.updateAlergy(aid, allergy).then((alergy) => {
+
+                allergy.alergy = '';
+                allergy.remarks = '';
             });
             getPatient();
         };
@@ -65,14 +64,8 @@ angular.module('OPD.visit').controller('VisitsController', ['$location','$scope'
             PatientService.deleteAlergy(id).then(() => {
                 getPatient();
             });
-        };
+        };*/
 
-        $scope.notify = (id, npatient) => {
-           npatient.pid=id;
-            PatientService.notify(id, npatient).then(patient => {
-
-            });
-        };
         $scope.open = function (page, size) {
             $rootScope.modalInstance =$uibModal.open({
                 animation: true,

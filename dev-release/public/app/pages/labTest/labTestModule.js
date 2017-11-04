@@ -15,7 +15,7 @@
                 url: '/labTest',
                 templateUrl: 'app/pages/labTest/labTest.html',
                 controller:'labTestCtrl',
-                title: 'Lab test Management',
+                title: 'Lab Tests',
                 sidebarMeta: {
                     icon: 'ion-android-home',
                     order: 1,

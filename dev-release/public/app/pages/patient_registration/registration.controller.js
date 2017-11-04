@@ -4,6 +4,7 @@ angular.module('OPD.patient_registration').controller('PatientRegController', ['
     function ($location,$scope, $stateParams, nurseService,PatientService) {
         $scope.myDate = new Date();
         var id=$stateParams.id;
+        if($stateParams.id != "undefined" || $stateParams.id !=null || $stateParams.id==''){
         function getPatient() {
 
             PatientService.getById($stateParams.id).then(patient => {
@@ -11,8 +12,8 @@ angular.module('OPD.patient_registration').controller('PatientRegController', ['
                 $scope.patient = patient;
                 $scope.patient.Birthday=new Date(patient.Birthday)
             });
-        }
-        getPatient()
+        }}
+        getPatient();
         $scope.required = true;
         $scope.date = new Date();
         $scope.titles = ["Baby", "Miss","Mr","Mrs","Rev"];

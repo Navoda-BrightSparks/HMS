@@ -5,10 +5,11 @@ mongoose.set('debug', false);
 
 const SpecimanModel = mongoose.model('speciman');
 const labTest = mongoose.model('labTest');
-
+visitModel = mongoose.model('Visit');
+const PatientModel = mongoose.model('Patient');
 const Router = express.Router();
 
-
+//insert specimen
 Router.post('/specimen', (req, res) => {
     var specimen = new SpecimanModel(req.body);
     specimen.save().then(specimen => {
@@ -19,6 +20,7 @@ Router.post('/specimen', (req, res) => {
         res.sendStatus(500);
     });
 });
+//get specimen
 Router.get('/specimen',(req,res)=>{
 
     SpecimanModel.find().exec().then(specimens => {
@@ -27,27 +29,30 @@ Router.get('/specimen',(req,res)=>{
         console.error(err);
         res.sendStatus(500);
     });
-})
+});
 
+//update specimen
+Router.put('/editSpecimen/:id', (req, res) => {
 
-Router.put('/specimen/:id', (req, res) => {
-    SpecimanModel.findById(req.params.id, function(err, specimen) {
+    SpecimanModel.findByIdAndUpdate(req.params.id,req.body,{new: true}, function(err, specimen) {
         if (err)
             res.send(err);
 
-        specimen.speciman = req.body.speciman;
-
-        updateSpecimen.save(function(err) {
-            if (err)
-                res.send(err);
-
-            res.json(updateSpecimen);
-        });
+        res.send(specimen)
     });
 });
 
+//delete specimen
+Router.delete('/removeSpecimen/:id', (req, res) => {
+console.log(req.params.id);
+    SpecimanModel.findByIdAndRemove(req.params.id)
+        .then(() => {
+            res.sendStatus(200);
+        }).catch(err => {
 
-
+        res.sendStatus(500);
+    });
+});
 Router.post('/labTest', (req, res) => {
     var labTestmodel = new labTest(req.body);
     labTestmodel.save().then(labTest => {
@@ -66,7 +71,40 @@ Router.get('/labTest',(req,res)=>{
         console.error(err);
         res.sendStatus(500);
     });
-})
+});
+
+//get lab test names
+Router.get('/LabTestNames',(req,res)=>{
+
+    labTest.find({}, ' -_id name').exec().then(labTest => {
+        res.json(labTest);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
+// get lab orders
+var orderarray=[];
+Router.get('/labOrders',(req,res)=>{
+
+    visitModel.find({},'laborders patient vid'
+        ).populate('patient' ,'HIN -_id').exec().then(orders => {
+
+
+        res.json(orders)
+
+
+
+
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+
+
+    });
+});
+
+
 //delete labtest
 Router.delete('/removeLabTest/:id', (req, res) => {
 

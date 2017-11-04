@@ -16,9 +16,9 @@
                 $scope.patient=info;
             });
         $scope.visit=()=>{
-            console.log($scope.patient.id)
+            console.log($scope.patient.id);
             QueueService.dequeue().then(result=>{
-                console.log(result.id)
+                console.log(result.id);
                 if(result.id===$scope.patient.id) {
                     $location.path('/visits/' + $scope.patient.id);
                 }else{
