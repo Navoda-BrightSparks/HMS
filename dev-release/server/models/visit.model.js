@@ -16,7 +16,7 @@ const VisitSchema = new Schema({
         unique: true
     },
         date: {
-             type:Date, default:new Date()
+             type:Date
        },
     remarks: {
         type: String
@@ -60,28 +60,7 @@ laborders:[{
         type:String
     }}
 ]
-,treatments:[{
-        treatmentName: {
-            type: String
-        },
-        remarks: {
-            type: String
-        },
-        date:{
-            type:Date
-        }}
-    ],
-    injections:[{
-        testName: {
-            type: String
-        },
-        remarks: {
-            type: String
-        },
-        date:{
-            type:Date
-        }}
-    ],
+,
     prescription:[{
         drugname: {
             type: String

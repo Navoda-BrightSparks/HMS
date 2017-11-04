@@ -1,22 +1,19 @@
 'use strict';
-/*
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
 const RoleSchema = new Schema({
-    fname: {
-        type: String
 
+    urole: {
+        type: String,
     },
-    lname: {
-        type: String
-    },
-    dob: {
-        type: Date
+
+    description: {
+        type: String,
     },
 });
 
-module.exports = mongoose.model('userrole',RoleSchema);
+module.exports = mongoose.model('userRole',RoleSchema);
 
-*/

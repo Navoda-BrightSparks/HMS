@@ -73,7 +73,43 @@
         <div class="col-xs-3">
             <div class="input-group">
                 <button type="submit" id="btnsubmit" class="btn btn-primary"  ng-disabled="userForm.$invalid" >Save</button>
+                <button type="submit" id="upemp" class="btn btn-info"  ng-disabled="userForm.$invalid" >Update</button>
+
             </div>
         </div>
+    </div>
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading"> <strong> Employee details</strong></div>
+        <table class="table">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Joined Date</th>
+                <th>NIC</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td>SK</td>
+                <td>Dreamkiller</td>
+                <td>23</td>
+                <td>Male</td>
+                <td>31/10/2017</td>
+                <td>942463790V</td>
+                <td>0772567107</td>
+                <td>skdudeflow@gmail.com</td>
+                <td>
+                    <a href=""><button type="button" class="btn btn-warning">Edit</button></a>
+                    <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
+                </td>
+            </tr>
+
+        </table>
+
+
     </div>
 </form>

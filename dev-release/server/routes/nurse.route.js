@@ -20,5 +20,14 @@ Router.post('/register', (req, res) => {
     });
 });
 
+//edit patient
+Router.put('/edit/:id', (req, res) => {
 
+    PatientModel.findByIdAndUpdate(req.params.id,req.body,{new: true}, function(err, patient) {
+        if (err)
+            res.send(err);
+
+res.send(patient)
+    });
+});
 module.exports = Router;

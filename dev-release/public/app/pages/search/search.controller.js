@@ -24,6 +24,9 @@ angular.module('OPD.search').controller('SearchController', ['$location','$scope
         $scope.goDash=(hin)=>{
             $location.path("/pdashboard/"+hin);
         };
+        $scope.editPatient=(hin)=>{
+            $location.path("/patients/"+hin);
+        };
         $scope.newVisit=(id)=>{
             $location.path("/visits/"+id);
 
